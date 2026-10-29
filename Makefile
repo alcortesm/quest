@@ -1,12 +1,16 @@
 BINARY := quest
 
-.PHONY: build test clean
+.PHONY: build test vet clean
 
-build:
+build: test vet
 	go build -o bin/$(BINARY) ./cmd
 
 test:
 	go test ./...
+
+vet:
+	go vet ./...
+	staticcheck ./...
 
 clean:
 	- rm -rf bin
