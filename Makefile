@@ -2,7 +2,7 @@ BINARY := quest
 
 .PHONY: build test vet clean
 
-build: test vet
+build:
 	go build -o bin/$(BINARY) ./cmd
 
 test:
@@ -10,7 +10,7 @@ test:
 
 vet:
 	go vet ./...
-	staticcheck ./...
+	go tool staticcheck ./...
 
 clean:
 	- rm -rf bin
