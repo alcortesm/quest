@@ -11,20 +11,25 @@ jobs:
 
   ci:
     name: Run CI
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
     steps:
-    - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
 
-    - name: Set up Go
-      uses: actions/setup-go@v7
-      with:
-        go-version-file: 'go.mod'
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: 'go.mod'
 
-    - name: Vet
-      run: make vet
+      - name: Vet
+        run: make vet
 
-    - name: Test
-      run: make test
+      - name: Test
+        run: make test
 
-    - name: Build
-      run: make build
+      - name: Build
+        run: make build
