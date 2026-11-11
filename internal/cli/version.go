@@ -6,7 +6,7 @@ import (
 	"runtime/debug"
 )
 
-// Version subcommand: it prints the cli version.
+// Version subcommand: prints the cli version.
 func Version(out io.Writer) error {
 	info, ok := debug.ReadBuildInfo()
 	if !ok {
