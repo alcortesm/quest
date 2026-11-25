@@ -9,16 +9,9 @@ test:
 	go test ./...
 
 vet:
+	go tool gitleaks dir .
 	go vet ./...
 	go tool staticcheck ./...
-
-# leaks-dir runs gitleaks over the contents of the working directory
-leaks-dir:
-	go tool gitleaks dir .
-
-# leaks-staged runs gitleaks over the staged changes, good for a pre-commit hook
-leaks-staged:
-	go tool gitleaks git --pre-commit --staged
 
 clean:
 	- rm -rf bin
