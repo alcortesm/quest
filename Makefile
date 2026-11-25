@@ -1,6 +1,6 @@
 BINARY := quest
 
-.PHONY: build test vet leaks-dir leaks-staged clean
+.PHONY: build test vet clean
 
 build:
 	go build -o bin/$(BINARY) ./cmd/quest
