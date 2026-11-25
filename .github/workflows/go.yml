@@ -9,6 +9,9 @@ on:
       - "**" # avoid running CI on push of tags
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   ci:
     name: Run CI
