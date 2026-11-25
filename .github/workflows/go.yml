@@ -5,10 +5,11 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "**" # avoid running CI on push of tags
+  pull_request:
 
 jobs:
-
   ci:
     name: Run CI
     runs-on: ${{ matrix.os }}
@@ -23,7 +24,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v7
         with:
-          go-version-file: 'go.mod'
+          go-version-file: "go.mod"
 
       - name: Vet
         run: make vet
